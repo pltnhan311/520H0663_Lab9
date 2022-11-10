@@ -1,0 +1,51 @@
+	public bool addStudent(Student s)
+        {
+	    if (s == null)
+            {
+                throw new NullReferenceException(); //fixed
+            }
+            foreach (var x in students)
+            {
+                if (x.Id == s.Id)
+                {
+                    return false; //fixed
+                }
+            }
+            students.Add(s);
+            return true;
+        }
+
+	public Student findStudentByAge(int age)
+        {
+            Student sv = null;
+            foreach (var x in students)
+            {
+                if (x.Age == age)
+                {
+                    sv = x;
+                    return sv;
+                }
+            }
+            if (sv == null) (fixed)
+            {
+                throw new NullReferenceException();
+            }
+            return sv;
+        }
+
+
+	public double getAverageScore()
+        {
+            if (students.Count == 0)
+            {
+                throw new SystemException("Student list is empty"); //fixed
+            }
+
+            double sum = 0;
+            foreach (var x in students)
+            {
+                sum += x.Score;
+            }
+            return sum / students.Count;
+        }
+
